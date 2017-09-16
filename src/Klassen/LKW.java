@@ -9,7 +9,7 @@ import Klassen.Bauart;
 import Interfaces.I_LKW;
 
 /**
- *
+ * aaa
  * @author irish
  */
 class LKW extends Bauart implements I_LKW{
