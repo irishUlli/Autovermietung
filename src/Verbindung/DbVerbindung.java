@@ -22,9 +22,10 @@ import net.proteanit.sql.DbUtils;
  */
 public class DbVerbindung {
 
-    private static String pfat = "jdbc:mysql://localhost?";
-    private static String pfat2 = "jdbc:mysql://localhost/AUTOVERMIETUNG?";
-    private static String benutzer = "user=root";
+    private static String pfat = "jdbc:mysql://localhost?autoReconnect=true&useSSL=false";
+    private static String pfat2 = "jdbc:mysql://localhost/AUTOVERMIETUNG?autoReconnect=true&useSSL=false";
+    private static String benutzer = "root";
+    private static String password = "irish";
     private static String driver = "com.mysql.jdbc.Driver";
 
     //Erzeugt eine Neue Datenbank mit Testdaten 
@@ -37,7 +38,7 @@ public class DbVerbindung {
 
             Class.forName(driver).newInstance();
 //         verbindung = DriverManager.getConnection("jdbc:mysql://localhost?user=root");
-            verbindung = DriverManager.getConnection(pfat + benutzer);
+            verbindung = DriverManager.getConnection(pfat, benutzer, password);
             sqlAnweisung = verbindung.createStatement();
 
             sqlCode = "DROP DATABASE IF EXISTS AUTOVERMIETUNG";
@@ -162,7 +163,7 @@ public class DbVerbindung {
 
         try {
             Class.forName(driver).newInstance();
-            verbindung = DriverManager.getConnection(pfat2 + benutzer);
+            verbindung = DriverManager.getConnection(pfat2 , "root","irish");
             sqlAnweisung = verbindung.createStatement();
 
             sqlCode = abfrage;
@@ -207,7 +208,7 @@ public class DbVerbindung {
 
         try {
             Class.forName(driver).newInstance();
-            verbindung = DriverManager.getConnection(pfat2 + benutzer);
+            verbindung = DriverManager.getConnection(pfat2 , benutzer, password);
             sqlAnweisung = verbindung.createStatement();
 
             sqlCode = "SELECT * FROM FAHRZEUGDATEN";
@@ -283,7 +284,7 @@ public class DbVerbindung {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
 //         System.out.printf("%s%n", "Treiber geladen");
 
-            verbindung = DriverManager.getConnection("jdbc:mysql://localhost?user=root");
+            verbindung = DriverManager.getConnection(pfat, benutzer, password);
 //         System.out.printf("%s%n", "Verbindung erzeugt");
             rueckgabewert = true;
 

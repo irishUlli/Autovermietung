@@ -20,7 +20,7 @@ public class Start {
         //Vesionierung / Datenbankaufbau?
         
         //*** NEUE DB ANLEGEN *****
-        DbVerbindung.NeueDbErzeugen();
+        //DbVerbindung.NeueDbErzeugen();
         
         
         Fahrzeug Fahrzeug;
